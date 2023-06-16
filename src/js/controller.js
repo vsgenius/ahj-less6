@@ -14,22 +14,25 @@ export default class Controller {
 	}
 
 	setDraggingElement(node) {
+		// console.log('setDraggingElement')
 		this.draggingElement = new Card(node);
 	}
 
 	replaceDragging() {
 		this.draggingProection.replaceWith(this.draggingElement.element);
-		this.draggingElement.element.style = this.draggingElement.styles;
+		this.draggingElement.element.style = ''
 	}
 
 	clear() {
+		// console.log('clear')
 		this.draggingElement = null;
 		this.draggingProection = null;
 	}
 
 	onMouseDown = (evt) => {
+		// console.log('onMouseDown')
 		const target = evt.target;
-		if (target.classList.contains('draggable')) {
+		 if (target.classList.contains('draggable')) {
 			this.shiftX = evt.offsetX;
 
 			this.shiftY = evt.offsetY;
@@ -43,13 +46,14 @@ export default class Controller {
 	}
 
 	onMouseUp = () => {
+		// console.log('onMouseUp')
 		if (this.draggingElement) {
-            console.log(this.draggingElement)
 			this.replaceDragging();
 			this.clear()
 		}
 	}
 	proectionAct(evt) {
+		// console.log('proectionAct')
 		const target = evt.target;
 		const element = this.draggingElement;
 		const proection = this.draggingProection;
@@ -68,7 +72,7 @@ export default class Controller {
 				proection.remove();
 				target.insertAdjacentElement(appendPosition, proection);
 			}
-		}
+		} 
 	}
 	
 	onMouseMove = (evt) => {

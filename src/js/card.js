@@ -35,9 +35,15 @@ export default class Card {
 
 	static create(content) {
 		const node = document.createElement('div');
+		const close = document.createElement('div');
+		close.classList.add('close');
+		close.innerHTML = `&#10060`;
+		close.addEventListener("click", (e) => {
+			  console.log(e.target.parentElement.remove(e.target));
+		});
 		node.classList.add('draggable');
 		node.textContent = content;
-
+		node.appendChild(close);
 		return new Card(node);
 	}
 
