@@ -4,7 +4,7 @@ const close = document.querySelectorAll(".close");
 document.querySelectorAll(".add-card").forEach((e) => {
   e.addEventListener("click", (event) => {
     console.log(event.target.nextSibling.className)
-    if (event.target.nextSibling.className !== null && !event.target.nextSibling.className) {
+    if (event.target.nextSibling.className !== 'draggable') {
       const input = document.createElement("input");
       input.className = "add-text";
       const btn = document.createElement("button");
