@@ -3,7 +3,7 @@ import Card from "./card";
 const close = document.querySelectorAll(".close");
 document.querySelectorAll(".add-card").forEach((e) => {
   e.addEventListener("click", (event) => {
-    console.log(event.target.nextElementSibling.className)
+    // console.log(event.target.nextElementSibling.className)
     if (event.target.nextElementSibling.className !== 'add-text') {
       const input = document.createElement("input");
       input.className = "add-text";
