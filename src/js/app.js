@@ -38,26 +38,26 @@ close.forEach((elem) => {
 });
 const items = document.querySelector('.todo')
 
-const itemsElement = items.querySelectorAll('.draggable');
+// const itemsElement = items.querySelectorAll('.draggable');
 
 const itemsProgress = document.querySelector('.progress')
 
-const itemsElementProgress = items.querySelectorAll('.draggable');
+// const itemsElementProgress = items.querySelectorAll('.draggable');
 
 const itemsDone = document.querySelector('.done')
 
-const itemsElementDone = items.querySelectorAll('.draggable');
+// const itemsElementDone = items.querySelectorAll('.draggable');
 
 let actualelement;
 let oldElem;
 
 const onMouseOver = (event) => {
-  if (oldElem!==event.target && event.target.className==='draggable') {
-    console.log(event.target);
-    if (oldElem) oldElem.classList.remove('mouseover');
-    event.target.classList.add('mouseover');
-    oldElem =event.target;
-  }
+  // if (oldElem!==event.target && event.target.className==='draggable') {
+  //   console.log(event.target);
+  //   if (oldElem) oldElem.classList.remove('mouseover');
+  //   event.target.classList.add('mouseover');
+  //   oldElem =event.target;
+  // }
   actualelement.style.top = event.clientY  + 'px';
   actualelement.style.left = event.clientX + 'px';
 
