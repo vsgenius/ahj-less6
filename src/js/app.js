@@ -28,43 +28,7 @@ document.querySelectorAll(".add-card").forEach((e) => {
   });
 });
 
-// const onMouseDown = function (event) {
-//   const ball = event.target;
-//   //console.log(event.target.className);
-//   if (event.target.className !== "draggable") {
-//     return;
-//   }
-//   ball.style.position = "absolute";
-//   ball.style.zIndex = 1000;
-//   document.body.append(ball);
 
-//   function moveAt(pageX, pageY) {
-//     ball.style.left = pageX - ball.offsetWidth / 2 + "px";
-//     ball.style.top = pageY - ball.offsetHeight / 2 + "px";
-//   }
-//   moveAt(event.pageX, event.pageY);
-//   function onMouseMove(event) {
-//     moveAt(event.pageX, event.pageY);
-//   }
-//   document.addEventListener("mousemove", onMouseMove);
-
-//   ball.onmouseup = function (e) {
-//     const col = document.elementFromPoint(
-//       e.pageX + ball.offsetWidth / 2 + 1,
-//       e.pageY
-//     );
-//     if (col.classList.contains("col")) {
-//       ball.style.position = "";
-//       ball.style.zIndex = 0;
-//       col.appendChild(ball);
-//       document.removeEventListener("mousemove", onMouseMove);
-//       ball.onmouseup = null;
-//     }
-//   };
-// };
-// document.body.addEventListener("mousedown", onMouseDown);
-// // document.body.addEventListener("mouseup", onMouseUp);
-// // document.body.addEventListener("mousemove", onMouseMove);
 
 close.forEach((elem) => {
   elem.addEventListener("click", (e) => {
@@ -85,15 +49,22 @@ const itemsDone = document.querySelector('.done')
 const itemsElementDone = items.querySelectorAll('.draggable');
 
 let actualelement;
+let oldElem;
 
 const onMouseOver = (event) => {
+  if (oldElem!==event.target && event.target.className==='draggable') {
+    console.log(event.target);
+    if (oldElem) oldElem.classList.remove('mouseover');
+    event.target.classList.add('mouseover');
+    oldElem =event.target;
+  }
   actualelement.style.top = event.clientY  + 'px';
-  actualelement.style.left = event.clientX - 50+ 'px';
+  actualelement.style.left = event.clientX + 'px';
 
 }
 const onMouseUp = (e) => {
   const mouseUpItem = e.target;
-  console.log(mouseUpItem.parentElement.className)
+  mouseUpItem.classList.remove('mouseover');
 if (mouseUpItem.className==='col todo') items.appendChild(actualelement);
 if (mouseUpItem.className==='col progress') itemsProgress.appendChild(actualelement);
 if (mouseUpItem.className==='col done') itemsDone.appendChild(actualelement);
@@ -103,7 +74,7 @@ if (mouseUpItem.className==='draggable' && mouseUpItem.parentElement.className==
   actualelement.classList.remove('dragged');
   actualelement = undefined;
   document.documentElement.removeEventListener('mouseup',onMouseUp)
-  document.documentElement.removeEventListener('mouseover',onMouseOver)  
+  document.documentElement.removeEventListener('mousemove',onMouseOver)  
 }
 
 items.addEventListener('mousedown',(e)=> {
@@ -112,7 +83,7 @@ items.addEventListener('mousedown',(e)=> {
   actualelement.classList.add('dragged');
 
   document.documentElement.addEventListener('mouseup',onMouseUp)
-  document.documentElement.addEventListener('mouseover',onMouseOver)  
+  document.documentElement.addEventListener('mousemove',onMouseOver)  
 })
 itemsProgress.addEventListener('mousedown',(e)=> {
   e.preventDefault;
@@ -120,7 +91,7 @@ itemsProgress.addEventListener('mousedown',(e)=> {
   actualelement.classList.add('dragged');
 
   document.documentElement.addEventListener('mouseup',onMouseUp)
-  document.documentElement.addEventListener('mouseover',onMouseOver)  
+  document.documentElement.addEventListener('mousemove',onMouseOver)  
 })
 itemsDone.addEventListener('mousedown',(e)=> {
   e.preventDefault;
@@ -128,5 +99,5 @@ itemsDone.addEventListener('mousedown',(e)=> {
   actualelement.classList.add('dragged');
 
   document.documentElement.addEventListener('mouseup',onMouseUp)
-  document.documentElement.addEventListener('mouseover',onMouseOver)  
+  document.documentElement.addEventListener('mousemove',onMouseOver)  
 })

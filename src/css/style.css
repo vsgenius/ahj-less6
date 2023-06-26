@@ -28,6 +28,9 @@ html {
       justify-content: space-between;
       align-items: center;
   }
+  .draggable.mouseover {
+    margin-bottom: 40px;
+}
   .draggable.dragged {
     border-radius: 10px;
     position: absolute;
