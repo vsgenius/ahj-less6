@@ -1,20 +1,18 @@
-
-html {
+ html {
     height: 100%;
     width: 100%;
   }
   body {
       display: flex;
-      
   }
-
   .col {
       width: 200px;
       min-height: 100px;
-      padding: 20px 20px;
+      padding: 20px 5px;
       background-color: #f2eeee;
       border-radius: 5px;
-      margin: 5px;
+      margin: 10px;
+      
   }
   
   .draggable {
@@ -23,31 +21,20 @@ html {
       border-radius: 5px;
       background-color: #e7e4e4;
       user-select: none;
-      padding: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 5px
   }
-  .draggable.mouseover {
-    margin-bottom: 40px;
-}
-  .draggable.dragged {
-    border-radius: 10px;
-    position: absolute;
-    z-index: 999;
-    pointer-events: none;
-    background: #fff;
-    cursor: grabbing;
-}
   
   .draggable:hover {
-      background-color: #e3dcdc;
+      background-color: #ffbfbf;
   }
   
   .draggable:active {
-      background-color: #f5d8d8;
+      background-color: #06f1d2;
   }
-.close {
+  .close {
     width: 20px;
     height: 20px;
 
@@ -65,4 +52,3 @@ html {
     background-color: green;
     color: white
 }
-
